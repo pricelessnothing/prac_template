@@ -1,0 +1,65 @@
+@import '~/styles/colors';
+
+.player {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__img_view {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 600px;
+    height: 500px;
+    background: #D9D9D9;
+    border-radius: 10px 10px 0 0;
+
+    &.img {
+      color: black;
+    }
+
+    &.meta_inf {
+      position: absolute;
+      width: 550px;
+      height: 60px;
+      text-align: center;
+      line-height: 60px;
+      color: $clr_background_light;
+      background: rgba(16, 55, 106, 0.5);
+      border-radius: 0;
+      margin: 421px 22px 14px 22px;
+    }
+  }
+
+  &__btm_panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 600px;
+    height: 100px;
+    background: $clr_background_light;
+    border-radius: 0 0 10px 10px;
+
+    &__button {
+      width: 40px;
+      height: 40px;
+
+      &.play_or_pause {
+        width: 40px;
+        height: 40px;
+      }
+
+      &.download {
+        width: 40px;
+        height: 40px;
+        margin: 70px;
+      }
+
+      &.toggle_meta {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
