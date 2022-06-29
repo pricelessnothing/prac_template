@@ -1,0 +1,35 @@
+@import '../../../styles/colors';
+
+.loginForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__role {
+		margin-bottom: 16px;
+	}
+
+	&__password {
+		margin-bottom: 27px;
+	}
+	&__button {
+		padding: 0;
+		border: none;
+		font: inherit;
+		display: block;
+		width: 163px;
+		height: 43px;
+		border-radius: 8px;
+		color: $clr_text_light;
+		background-color: $clr_background_dark;
+		cursor: pointer;
+	}
+}
+
+.input {
+	display: block;
+	width: 323px;
+	height: 38px;
+	padding-left: 24px;
+	border: 1px solid rgba(72, 72, 100, 1) ;
+}
