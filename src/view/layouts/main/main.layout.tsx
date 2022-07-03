@@ -1,17 +1,10 @@
 import { Outlet } from 'react-router';
 import { useState } from 'react';
 
-import { Navbar } from '../../components/navbar/navbar.component';
-import { Indicators } from '../../components/indicators/indicatros.component';
+import { Indicator } from '../../components/indicator/indicator.component';
 import { Menu } from '../../components/menu/menu.component';
 
 import styles from './main.style.scss';
-
-const NAVBAR_ITEMS = [
-  { title: 'Правила', link: '/' },
-  { title: 'Пример Redux', link: 'redux' },
-  { title: 'Другой layout', link: 'login' },
-];
 
 const MENU_ITEMS = [
   { title: 'Камеры', link: 'cameras' },
@@ -20,8 +13,19 @@ const MENU_ITEMS = [
   { title: 'Настройки', link: 'settings' },
 ];
 
+const INDICATORS_NUMBER: number = 4;
+
 export const MainLayout: React.FC = () => {
   const [menuActive, setMenuActive] = useState(false);
+
+  const getIndicators = (amount: number) => {
+    const indicators = [];
+    for (let i = 0; i < amount; i++) {
+      indicators.push(<Indicator />);
+    }
+    return indicators;
+  };
+
   return (
     <div className={styles.layout}>
       <header className={styles.layout__header}>
@@ -35,10 +39,8 @@ export const MainLayout: React.FC = () => {
         >
           <span />
         </div>
-
-        <Indicators count={4} />
+        <div className={styles.layout__header__indicators}>{getIndicators(INDICATORS_NUMBER)}</div>
       </header>
-      <Navbar items={NAVBAR_ITEMS} />
       <main className={styles.layout__main}>
         <Outlet />
       </main>

@@ -1,0 +1,46 @@
+@import '../../../styles/colors.scss';
+
+.wrapper {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  background-color: #D9D9D9;;
+  width: 300px;
+  height: 251px;
+  border-radius: 8px 8px 0 0;
+}
+
+.control {
+  background-color: $clr_background_light;
+  width: 300px;
+  height: 49px;
+  border-radius: 0 0 8px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__btns {
+    margin: 0 -3.5px;
+    display: flex;
+  }
+
+  &__btn {
+		border: none;
+		display: block;
+    background-color: $clr_background_light;
+		cursor: pointer;
+    padding: 3.5px;
+
+    span {
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: $clr_emphasize_dark;
+    }
+  }
+}
