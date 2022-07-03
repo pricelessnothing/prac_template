@@ -15,9 +15,9 @@ const NAVBAR_ITEMS = [
 
 const MENU_ITEMS = [
   { title: 'Камеры', link: 'cameras' },
-  { title: 'Дефекты', link: '#' },
-  { title: 'Отчеты', link: '#' },
-  { title: 'Настройки', link: '#' },
+  { title: 'Дефекты', link: 'defects' },
+  { title: 'Отчеты', link: 'reports' },
+  { title: 'Настройки', link: 'settings' },
 ];
 
 export const MainLayout: React.FC = () => {

@@ -1,5 +1,6 @@
 // import classNames from 'classnames';
 import { NavLink, useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 
 import { MenuProps } from './menu.type';
 import styles from './menu.style.scss';
@@ -16,7 +17,13 @@ export const Menu = ({ active, setActive, items }: MenuProps) => {
       <div className={styles.menu__content}>
         <nav className={styles.menu__items}>
           {items.map(({ link, title }) => (
-            <NavLink to={link} key={link} className={styles.menu__item}>
+            <NavLink
+              to={link}
+              key={link}
+              className={({ isActive }) =>
+                classNames(styles.menu__item, { [styles.active]: isActive })
+              }
+            >
               {title}
             </NavLink>
           ))}

@@ -33,7 +33,12 @@
     padding: 9px 0 9px 30px;
 
     &:first-child {
-      padding-top: 52px;
+      margin-top: 52px;
+    }
+
+    &.active {
+      background-color: $clr_background_dark;
+      color: $clr_text_light;
     }
   }
 
