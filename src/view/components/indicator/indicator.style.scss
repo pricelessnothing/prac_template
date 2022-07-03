@@ -1,4 +1,11 @@
 .indicator {
-  width: 63px;
-  height: 63px;
+  img {
+    width: 63px;
+    height: 100%;
+    @media (max-width: 426px) {
+      width: 50px;
+    }
+  }
+
+  
 }

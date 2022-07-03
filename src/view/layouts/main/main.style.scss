@@ -19,12 +19,20 @@
     justify-content: space-between;
     z-index: 100;
 
+    @media (max-width: 426px) {
+      height: 60px;
+    }
+
     &__toggleBtn {
       width: 40px;
       height: 20px;
-      margin-left: 20px;
+      margin-left: 30px;
       position: relative;
       cursor: pointer;
+
+      @media (max-width: 426px) {
+        width: 35px;
+      }
 
       &::before {
         content: "";
@@ -33,6 +41,10 @@
         width: 40px;
         background-color: $clr_text_dark;
         height: 3px;
+
+        @media (max-width: 426px) {
+          width: 35px;
+        }
       }
 
       span {
@@ -41,6 +53,10 @@
         width: 40px;
         background-color: $clr_text_dark;
         height: 3px;
+
+        @media (max-width: 426px) {
+          width: 35px;
+        }
       }
 
       &::after {
@@ -50,6 +66,10 @@
         width: 40px;
         background-color: $clr_text_dark;
         height: 3px;
+
+        @media (max-width: 426px) {
+          width: 35px;
+        }
       }
 
     }
