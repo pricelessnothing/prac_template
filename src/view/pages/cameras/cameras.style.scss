@@ -3,15 +3,19 @@
 .cameras {
   margin-top: 80px;
   width: 100vw;
-  height: calc(100% - 80px);
+  // height: 100vh;
+  height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 1169px) {
+    height: auto;
+  }
 
   @media (max-width: 426px) {
     margin-top: 60px;
-    height: calc(100% - 60px);
   }
 
   &__btn {
@@ -41,7 +45,13 @@
 
 .wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
   flex-wrap: wrap;
-  max-width: 1200px;
+  width: 100vw;
+  height: 100vh;
+
+  @media (max-width: 1169px) {
+    height: auto;
+  }
 }

@@ -9,11 +9,8 @@ export const Menu = ({ active, setActive, items }: MenuProps) => {
   const navigate = useNavigate();
 
   return (
-    <div
-      className={active ? `${styles.menu} ${styles.active}` : styles.menu}
-      onClick={() => setActive(false)}
-    >
-      <div className={styles.blackDrop} />
+    <div className={active ? `${styles.menu} ${styles.active}` : styles.menu}>
+      <div className={styles.blackDrop} onClick={() => setActive(false)} />
       <div className={styles.menu__content}>
         <nav className={styles.menu__items}>
           {items.map(({ link, title }) => (
@@ -23,6 +20,7 @@ export const Menu = ({ active, setActive, items }: MenuProps) => {
               className={({ isActive }) =>
                 classNames(styles.menu__item, { [styles.active]: isActive })
               }
+              onClick={() => setActive(false)}
             >
               {title}
             </NavLink>

@@ -1,8 +1,6 @@
 @import '../../../styles/colors.scss';
 
 .wrapper {
-  width: 300px;
-  height: 300px;
   display: flex;
   flex-direction: column;
   margin: 20px;
@@ -10,14 +8,20 @@
 
 .content {
   background-color: #D9D9D9;;
-  width: 300px;
-  height: 251px;
+  width: 40vw;
+  height: 33.383vw;
+  min-width: 300px;
+  min-height: 251px;
+  max-width: 350px;
+  max-height: 301px;
   border-radius: 8px 8px 0 0;
 }
 
 .control {
   background-color: $clr_background_light;
-  width: 300px;
+  width: 40vw;
+  min-width: 300px;
+  max-width: 350px;
   height: 49px;
   border-radius: 0 0 8px 8px;
   display: flex;
