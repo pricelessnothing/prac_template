@@ -21,7 +21,7 @@ export const MainLayout: React.FC = () => {
   const getIndicators = (amount: number) => {
     const indicators = [];
     for (let i = 0; i < amount; i++) {
-      indicators.push(<Indicator />);
+      indicators.push(<Indicator key={i} />);
     }
     return indicators;
   };
