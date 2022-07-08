@@ -1,10 +1,7 @@
-@import '../../../styles/colors.scss';
+@import '../../../styles/colors';
 
 .cameras {
-  margin-top: 80px;
-  width: 100vw;
-  // height: 100vh;
-  height: calc(100vh - 80px);
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -21,23 +18,23 @@
   &__btn {
     margin-bottom: 20px;
     padding: 0;
-		border: none;
-		box-shadow: 0px 5px 10px rgba(0, 0, 50, 0.2);
-		display: block;
-		width: 74px;
-		height: 40px;
+    border: none;
+    box-shadow: 0 5px 10px rgb(0 0 50 / 20%);
+    display: block;
+    width: 74px;
+    height: 40px;
     border-radius: 10px;
-		background-color: $clr_background_light;
-		cursor: pointer;
+    background-color: $clr_background_light;
+    cursor: pointer;
 
-    &:after{
+    &::after{
       content: '';
       display: block;
       position: relative;
       left: calc(50% - 10px);
       width: 20px;
       height: 20px;
-		  border-radius: 50%;
+      border-radius: 50%;
       background-color: $clr_emphasize_dark;
     }
   }
@@ -49,7 +46,7 @@
   align-items: center;
   flex-wrap: wrap;
   width: 100vw;
-  height: 100vh;
+  height: calc(100% - 70px);
 
   @media (max-width: 1169px) {
     height: auto;

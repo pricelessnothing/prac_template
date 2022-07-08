@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router';
 
-import styles from './login.style.scss';
+import styles from './empty.style.scss';
 
-export const LoginLayout: React.FC = () => {
+export const EmptyLayout: React.FC = () => {
   return (
     <main className={styles.layout}>
       <Outlet />
