@@ -9,20 +9,6 @@ type PlayerProps = {
 };
 
 export const Player: FC<PlayerProps> = props => {
-  const META_KEYS = [
-    'sourceName',
-    'tag',
-    'frameId',
-    'frameTime',
-    'frameGrabTime',
-    'width',
-    'height',
-    'srcWidth',
-    'srcHeight',
-    'shutter',
-    'gain',
-    'temperature',
-  ];
   const [isMetaShown, setIsShowed] = useState<boolean>(true);
   const [isStopped, setIsStopped] = useState<boolean>(false);
   let interval: NodeJS.Timer;
@@ -46,6 +32,11 @@ export const Player: FC<PlayerProps> = props => {
     setIsStopped(!isStopped);
   };
 
+  const downloadHandler = () => {
+    const a = document.getElementById(`frameLink_${props.playerId}`);
+    a!.click();
+  }
+
   const playFrames = async () => {
     const frame = await camerasService.getFrame();
     if (props.playerId !== null || undefined) {
@@ -57,7 +48,7 @@ export const Player: FC<PlayerProps> = props => {
   };
 
   const setMeta = (meta: Record<string, any>) => {
-    for (const key of META_KEYS) {
+    for (const key of camerasService.META_KEYS) {
       document.getElementById(`${key}_${props.playerId}`)!.innerText = `${key}: ${meta[key]}`;
     }
   };
@@ -114,10 +105,11 @@ export const Player: FC<PlayerProps> = props => {
           alt={isStopped ? 'Кнопка паузы' : 'Кнопка проигрывания'}
         />
         <div className={`${styles.player__btm_panel__button} ${styles.download}`}>
-          <img src="../ic_download_button.svg" alt="Скачать изображение" />
+          <img onClick={downloadHandler} src="../ic_download_button.svg" alt="Скачать изображение" />
           <a
             className={`${styles.player__btm_panel__button} ${styles.download} ${styles.link}`}
             id={`frameLink_${props.playerId}`}
+            download=""
           />
         </div>
         <img

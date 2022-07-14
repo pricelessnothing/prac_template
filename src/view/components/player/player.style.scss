@@ -22,10 +22,10 @@
       position: absolute;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       flex-direction: row;
-      width: 550px;
-      height: 70px;
+      width: 555px;
+      height: 75px;
       text-align: center;
       line-height: 15px;
       color: $clr_background_light;
@@ -39,8 +39,9 @@
         list-style: none;
 
         li {
+          margin: 5px 5px 5px 10px;
           text-align: left;
-          width: 180px;
+          width: 190px;
           height: 15px;
         }
       }
