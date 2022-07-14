@@ -20,14 +20,30 @@
 
     &.meta_inf {
       position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
       width: 550px;
-      height: 60px;
+      height: 70px;
       text-align: center;
-      line-height: 60px;
+      line-height: 15px;
       color: $clr_background_light;
       background: rgba(16, 55, 106, 0.5);
       border-radius: 0;
       margin: 421px 22px 14px 22px;
+
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+          text-align: left;
+          width: 180px;
+          height: 15px;
+        }
+      }
     }
   }
 
@@ -54,6 +70,11 @@
         width: 40px;
         height: 40px;
         margin: 70px;
+
+        &.link {
+          height: 40px;
+          margin: 70px;
+        }
       }
 
       &.toggle_meta {
