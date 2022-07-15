@@ -8,7 +8,6 @@ import { Auth } from './view/pages/login/login.component';
 import { NotFoundPage } from './view/pages/not-found/not-found.component';
 import { Redux } from './view/pages/redux/redux.component';
 import { Rules } from './view/pages/rules/rules.component';
-import { PlayerPage } from '~/view/pages/player-page/player-page.component';
 
 export const Router = () => (
   <>
@@ -24,7 +23,6 @@ export const Router = () => (
         <Route path="/reports" element={<ComingSoon />} />
         <Route path="/settings" element={<ComingSoon />} />
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="/player" element={<PlayerPage />} />
       </Route>
     </Routes>
   </>
