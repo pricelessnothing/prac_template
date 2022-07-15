@@ -19,7 +19,7 @@ export const Player: FC<PlayerProps> = props => {
     } else {
       interval = setInterval(() => {
         void playFrames();
-      }, 167);
+      }, 167); // 167 ms ~ 6 fps
     }
     return () => clearInterval(interval);
   }, [isStopped]);
@@ -33,23 +33,19 @@ export const Player: FC<PlayerProps> = props => {
   };
 
   const downloadHandler = () => {
-    const a = document.getElementById(`frameLink_${props.playerId}`);
-    a!.click();
-  }
+    document.getElementById(`frameLink_${props.playerId}`)?.click();
+  };
 
   const playFrames = async () => {
     const frame = await camerasService.getFrame();
-    if (props.playerId !== null || undefined) {
-      setMeta(frame.meta);
-      setImage(frame.image);
-    } else {
-      throw Error('Неправильно заданный props');
-    } // ???
+    setMeta(frame.meta);
+    setImage(frame.image);
   };
 
-  const setMeta = (meta: Record<string, any>) => {
+  const setMeta = (meta: Record<string, string>) => {
     for (const key of camerasService.META_KEYS) {
-      document.getElementById(`${key}_${props.playerId}`)!.innerText = `${key}: ${meta[key]}`;
+      const metaElement = document.getElementById(`${key}_${props.playerId}`) as HTMLElement;
+      metaElement.innerText = `${key}: ${meta[key]}`;
     }
   };
 
@@ -58,6 +54,7 @@ export const Player: FC<PlayerProps> = props => {
     const downloadLinkElement = document.getElementById(
       `frameLink_${props.playerId}`,
     ) as HTMLLinkElement;
+
     URL.revokeObjectURL(imageElement.src);
     const imageURL = URL.createObjectURL(image);
     imageElement.src = imageURL;
@@ -105,7 +102,11 @@ export const Player: FC<PlayerProps> = props => {
           alt={isStopped ? 'Кнопка паузы' : 'Кнопка проигрывания'}
         />
         <div className={`${styles.player__btm_panel__button} ${styles.download}`}>
-          <img onClick={downloadHandler} src="../ic_download_button.svg" alt="Скачать изображение" />
+          <img
+            onClick={downloadHandler}
+            src="../ic_download_button.svg"
+            alt="Скачать изображение"
+          />
           <a
             className={`${styles.player__btm_panel__button} ${styles.download} ${styles.link}`}
             id={`frameLink_${props.playerId}`}

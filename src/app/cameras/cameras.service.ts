@@ -24,13 +24,10 @@ class CamerasService {
     const body = await response.formData();
     const meta = this.getMeta(body);
     const image = this.getImage(body);
-    return {
-      meta,
-      image,
-    };
+    return { meta, image };
   }
 
-  private getMeta(body: FormData): Record<string, any> {
+  private getMeta(body: FormData): Record<string, string> {
     const res: Record<string, any> = {};
     for (let i = 0; i < this.META_KEYS.length; i++) {
       const data = body.get(this.META_KEYS[i]);
@@ -41,7 +38,7 @@ class CamerasService {
           res[this.META_KEYS[i]] = data;
         }
       } else {
-        throw Error('Некорректные метаданные');
+        throw new Error('Bad metadata');
       }
     }
     return res;
@@ -52,7 +49,7 @@ class CamerasService {
     if (imageData !== null) {
       return new Blob([imageData], { type: 'image/jpeg' });
     }
-    throw Error('Некорректное изображение');
+    throw new Error('Bad image');
   }
 
   private convertFromUnixTime(date: Date): string {
