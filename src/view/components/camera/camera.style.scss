@@ -1,0 +1,51 @@
+@import '../../../styles/colors.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.content {
+  background-color: #D9D9D9;;
+  width: 40vw;
+  height: 33.383vw;
+  min-width: 300px;
+  min-height: 251px;
+  max-width: 350px;
+  max-height: 301px;
+  border-radius: 8px 8px 0 0;
+}
+
+.control {
+  background-color: $clr_background_light;
+  width: 40vw;
+  min-width: 300px;
+  max-width: 350px;
+  height: 49px;
+  border-radius: 0 0 8px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__btns {
+    margin: 0 -3.5px;
+    display: flex;
+  }
+
+  &__btn {
+		border: none;
+		display: block;
+    background-color: $clr_background_light;
+		cursor: pointer;
+    padding: 3.5px;
+
+    span {
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: $clr_emphasize_dark;
+    }
+  }
+}
