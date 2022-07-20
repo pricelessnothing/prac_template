@@ -23,55 +23,37 @@ class CamerasService {
     );
     const body = await response.formData();
     const meta = this.getMeta(body);
-    const image = this.getImage(body);
-    return { meta, image };
+    const imageURL = this.getImage(body);
+    return { meta, imageURL };
   }
 
   private getMeta(body: FormData): Record<string, string> {
     const res: Record<string, any> = {};
-    for (let i = 0; i < this.META_KEYS.length; i++) {
-      const data = body.get(this.META_KEYS[i]);
+    this.META_KEYS.forEach((metaKey: string) => {
+      const data = body.get(metaKey);
       if (data !== null || undefined) {
-        if (i === 3 || i === 4) {
-          res[this.META_KEYS[i]] = this.convertFromUnixTime(new Date(Number(data)));
+        if (metaKey === 'frameTime' || metaKey === 'frameGrabTime') {
+          const date = new Date(Number(data));
+          const hours = date.getHours().toString().padStart(2, '0');
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          res[metaKey] = `${hours}:${minutes}:${seconds}`;
         } else {
-          res[this.META_KEYS[i]] = data;
+          res[metaKey] = data;
         }
       } else {
         throw new Error('Bad metadata');
       }
-    }
+    });
     return res;
   }
 
-  private getImage(body: FormData): Blob {
+  private getImage(body: FormData): string {
     const imageData = body.get('data');
     if (imageData !== null) {
-      return new Blob([imageData], { type: 'image/jpeg' });
+      return window.URL.createObjectURL(new Blob([imageData], { type: 'image/jpeg' }));
     }
     throw new Error('Bad image');
-  }
-
-  private convertFromUnixTime(date: Date): string {
-    let hours: string;
-    let minutes: string;
-    let seconds: string;
-    if (date.getHours() < 10) {
-      hours = `0${date.getHours()}`;
-    } else {
-      hours = `${date.getHours()}`;
-    }
-    if (date.getMinutes() < 10) {
-      minutes = `0${date.getMinutes()}`;
-    } else {
-      minutes = `${date.getMinutes()}`;
-    }
-    if (date.getSeconds() < 10) {
-      seconds = `0${date.getSeconds()}`;
-    } else {
-      seconds = `${date.getSeconds()}`;
-    }
-    return `${hours}:${minutes}:${seconds}`;
   }
 }
 
