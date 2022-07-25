@@ -1,13 +1,13 @@
-import { FC, useEffect, useState } from 'react';
+import { createElement, FC, useEffect, useState } from 'react';
 
 import styles from './player.style.scss';
 
 import { downloadFile } from '~/app/utils/downloadFile';
 import { camerasService } from '~/app/cameras/cameras.service';
-//import ic_download_button from '~/assets/ic_download_button.svg';
-//import ic_list_button from '~/assets/ic_list_button.svg';
-//import ic_pause_button from '~/assets/ic_pause_button.svg';
-//import ic_play_button from '~/assets/ic_play_button.svg';
+import icDownloadButton from '~/assets/ic_download_button.svg';
+import icListButton from '~/assets/ic_list_button.svg';
+import icPauseButton from '~/assets/ic_pause_button.svg';
+import icPlayButton from '~/assets/ic_play_button.svg';
 
 type PlayerProps = {
   playerId: number;
@@ -44,7 +44,7 @@ export const Player: FC<PlayerProps> = props => {
     if (imageURL === undefined) {
       throw Error('Bad image in component');
     }
-    downloadFile(imageURL, 'somename');
+    downloadFile(imageURL, 'frame');
   };
 
   const playFrames = async () => {
@@ -67,7 +67,7 @@ export const Player: FC<PlayerProps> = props => {
         />
         {isMetaShown && (
           <div className={`${styles.player__img_view} ${styles.meta_inf}`}>
-            {Object.entries(meta)}
+            //<p>{Object.entries(meta.map(([metaKey, metaValue] : string) => ()))}</p>
           </div>
         )}
       </div>
@@ -75,19 +75,19 @@ export const Player: FC<PlayerProps> = props => {
         <img
           onClick={pauseHandler}
           className={`${styles.player__btm_panel__button} ${styles.play_or_pause}`}
-          //src={isStopped ? { ic_pause_button } : { ic_play_button }}
+          src={isStopped ? icPauseButton : icPlayButton}
           alt={isStopped ? 'Кнопка паузы' : 'Кнопка проигрывания'}
         />
         <img
           className={`${styles.player__btm_panel__button} ${styles.download}`}
           onClick={downloadHandler}
-          //src={ic_download_button}
+          src={icDownloadButton}
           alt="Скачать изображение"
         />
         <img
           onClick={showMetaHandler}
           className={`${styles.player__btm_panel__button} ${styles.toggle_meta}`}
-          //src={ic_list_button}
+          src={icListButton}
           alt="Кнопка сокрытия мета информации"
         />
       </div>
