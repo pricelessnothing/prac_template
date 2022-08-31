@@ -21,11 +21,12 @@
     &.meta_inf {
       position: absolute;
       display: flex;
-      flex-flow: wrap row;
+      flex-wrap: wrap;
+      flex-direction: column;
       width: 555px;
       height: 75px;
       text-align: center;
-      line-height: 15px;
+      line-height: 18px;
       color: $clr_background_light;
       background: rgba(16, 55, 106, 0.5);
       border-radius: 0;

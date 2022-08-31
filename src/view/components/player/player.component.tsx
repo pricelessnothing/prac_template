@@ -1,4 +1,4 @@
-import { createElement, FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import styles from './player.style.scss';
 
@@ -67,7 +67,11 @@ export const Player: FC<PlayerProps> = props => {
         />
         {isMetaShown && (
           <div className={`${styles.player__img_view} ${styles.meta_inf}`}>
-            //<p>{Object.entries(meta.map(([metaKey, metaValue] : string) => ()))}</p>
+            {Object.entries(meta).map(([metaKey, metaValue]) => (
+              <p key={metaKey}>
+                {metaKey}:{metaValue}
+              </p>
+            ))}
           </div>
         )}
       </div>
